@@ -1,0 +1,18 @@
+{
+  "services": [
+    {
+      "type": "web",
+      "name": "lumina-essence",
+      "env": "static",
+      "buildCommand": "cd client && npm install && npm run build",
+      "staticPublishPath": "./client/dist",
+      "headers": [
+        {
+          "path": "/*",
+          "name": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}
