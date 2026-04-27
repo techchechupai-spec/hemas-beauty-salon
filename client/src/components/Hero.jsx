@@ -51,7 +51,7 @@ const Hero = () => {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <section id="home" className="relative h-screen md:h-screen h-[60vh] w-full overflow-hidden md:rounded-none rounded-[20%] md:mt-0 mt-16 mx-4 md:mx-0">
+    <section id="home" className="relative h-screen md:h-screen h-[30vh] w-full overflow-hidden md:rounded-none rounded-[10%] md:mt-0 mt-16 mx-4 md:mx-0">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -74,7 +74,7 @@ const Hero = () => {
           </motion.div>
 
           {/* Floating Sparkles */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
             {[...Array(6)].map((_, i) => (
               <motion.div
                 key={i}
@@ -109,7 +109,7 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="mb-3 md:mb-6"
               >
-                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-light text-white mb-2 md:mb-4 leading-tight">
+                <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-light text-white mb-1 md:mb-4 leading-tight">
                   <motion.span
                     className="inline-block"
                     animate={{ 
@@ -128,7 +128,7 @@ const Hero = () => {
 
               {/* Animated Subtitle */}
               <motion.p 
-                className="text-sm sm:text-xl md:text-2xl lg:text-3xl text-white/95 mb-4 md:mb-10 font-light tracking-wide"
+                className="text-xs sm:text-xl md:text-2xl lg:text-3xl text-white/95 mb-2 md:mb-10 font-light tracking-wide"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
@@ -150,11 +150,11 @@ const Hero = () => {
                   <Button 
                     size="lg" 
                     asChild 
-                    className="btn-luxury text-sm md:text-lg px-6 md:px-10 py-4 md:py-6 shadow-2xl"
+                    className="btn-luxury text-xs md:text-lg px-4 md:px-10 py-2 md:py-6 shadow-2xl"
                   >
                     <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">
-                      <Sparkles className="w-4 h-4 md:w-5 md:h-5 mr-2" />
-                      Book Your Appointment
+                      <Sparkles className="w-3 h-3 md:w-5 md:h-5 mr-1 md:mr-2" />
+                      Book Appointment
                     </a>
                   </Button>
                 </motion.div>
@@ -194,15 +194,15 @@ const Hero = () => {
       </motion.button>
 
       {/* Animated Dots */}
-      <div className="absolute bottom-28 md:bottom-24 sm:bottom-32 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+      <div className="absolute bottom-32 md:bottom-24 sm:bottom-32 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {slides.map((_, index) => (
           <motion.button
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`rounded-full transition-all ${
               currentSlide === index 
-                ? 'bg-luxury-gold w-12 h-3' 
-                : 'bg-white/50 w-3 h-3 hover:bg-white/80'
+                ? 'bg-luxury-gold w-8 md:w-12 h-2 md:h-3' 
+                : 'bg-white/50 w-2 md:w-3 h-2 md:h-3 hover:bg-white/80'
             }`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
