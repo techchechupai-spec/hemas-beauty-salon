@@ -44,7 +44,7 @@ const Navbar = () => {
             <span className={`text-2xl sm:text-3xl font-display font-semibold tracking-wider ${
               scrolled ? 'gradient-text' : 'text-white text-shadow-gold'
             }`}>
-              Lumina Essence
+              Hema Beauty Parlour
             </span>
           </motion.div>
           

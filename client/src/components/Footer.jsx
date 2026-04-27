@@ -14,7 +14,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-8 h-8 text-luxury-gold" />
-              <h3 className="text-2xl font-display font-light">Hemas Beauty</h3>
+              <h3 className="text-2xl font-display font-light">Hema Beauty Parlour</h3>
             </div>
             <p className="text-gray-400 mb-6">
               Where luxury meets artistry. Experience the finest beauty treatments in an elegant atmosphere.
@@ -101,7 +101,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © {currentYear} Hemas Beauty Salon. All rights reserved.
+            © {currentYear} Hema Beauty Parlour. All rights reserved.
           </p>
         </div>
       </div>
