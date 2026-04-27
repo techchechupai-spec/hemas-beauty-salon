@@ -10,19 +10,19 @@
     --card-foreground: 0 0% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 11%;
-    --primary: 40 45% 56%;
+    --primary: 45 75% 52%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 98%;
+    --secondary: 30 100% 97%;
     --secondary-foreground: 0 0% 11%;
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
-    --accent: 40 45% 56%;
+    --accent: 351 100% 86%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 40 45% 56%;
+    --ring: 45 75% 52%;
     --radius: 1rem;
   }
 }
@@ -31,7 +31,205 @@
   * {
     @apply border-border;
   }
+  
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-gradient-to-br from-luxury-pearl via-luxury-champagne to-luxury-blush font-sans text-foreground;
+    background-attachment: fixed;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Luxury gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-luxury-gold via-luxury-rose to-luxury-gold bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: shimmer 3s infinite;
+  }
+
+  /* Glass morphism */
+  .glass {
+    @apply bg-white/80 backdrop-blur-xl border border-white/20 shadow-xl;
+  }
+
+  .glass-dark {
+    @apply bg-luxury-charcoal/80 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  /* Luxury card */
+  .luxury-card {
+    @apply bg-gradient-to-br from-white via-luxury-pearl to-luxury-champagne;
+    @apply border-2 border-luxury-gold/20 rounded-3xl shadow-2xl;
+    @apply transition-all duration-500 hover:shadow-luxury-gold/30 hover:scale-105;
+    @apply hover:border-luxury-gold/40;
+  }
+
+  /* Floating animation */
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Glow effect */
+  .glow {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3),
+                0 0 40px rgba(212, 175, 55, 0.2),
+                0 0 60px rgba(212, 175, 55, 0.1);
+  }
+
+  .glow-rose {
+    box-shadow: 0 0 20px rgba(232, 180, 184, 0.3),
+                0 0 40px rgba(232, 180, 184, 0.2),
+                0 0 60px rgba(232, 180, 184, 0.1);
+  }
+
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #D4AF37, #E8B4B8, #D4AF37) border-box;
+    border: 3px solid transparent;
+    border-radius: 1.5rem;
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Luxury button */
+  .btn-luxury {
+    @apply relative overflow-hidden bg-gradient-to-r from-luxury-gold to-luxury-rose;
+    @apply text-white font-semibold px-8 py-4 rounded-full;
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+    @apply hover:from-luxury-rose hover:to-luxury-gold;
+  }
+
+  .btn-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-luxury:hover::before {
+    left: 100%;
+  }
+
+  /* Parallax section */
+  .parallax-section {
+    @apply relative overflow-hidden;
+  }
+
+  /* Animated underline */
+  .animated-underline {
+    @apply relative;
+  }
+
+  .animated-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-luxury-gold to-luxury-rose;
+    @apply transition-all duration-300;
+  }
+
+  .animated-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* Luxury divider */
+  .luxury-divider {
+    @apply h-px bg-gradient-to-r from-transparent via-luxury-gold to-transparent;
+    @apply my-8;
+  }
+
+  /* Stagger animation for children */
+  .stagger-children > * {
+    opacity: 0;
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+  .stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+}
+
+@layer utilities {
+  /* Text shadows */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .text-shadow-gold {
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+  }
+
+  /* Backdrop filters */
+  .backdrop-blur-luxury {
+    backdrop-filter: blur(20px) saturate(180%);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF8F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #D4AF37, #E8B4B8);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #B8941F, #D4A0A4);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(212, 175, 55, 0.3);
+  color: #1C1C1C;
+}
+
+::-moz-selection {
+  background: rgba(212, 175, 55, 0.3);
+  color: #1C1C1C;
 }

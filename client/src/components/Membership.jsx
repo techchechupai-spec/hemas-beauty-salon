@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 import { FaCrown, FaStar, FaGem } from 'react-icons/fa';
 
 const Membership = () => {
-  const whatsappNumber = '1234567890'; // Replace with your WhatsApp number
+  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '1234567890';
 
   const plans = [
     {

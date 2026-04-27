@@ -1,41 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const whatsappNumber = '1234567890'; // Replace with your WhatsApp number
+  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '1234567890';
 
   const slides = [
     {
       image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80',
       title: 'Redefine Your Radiance',
-      subtitle: 'Where luxury meets artistry'
+      subtitle: 'Where luxury meets artistry',
+      gradient: 'from-luxury-gold/90 via-luxury-rose/80 to-transparent'
     },
     {
       image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80',
       title: 'Expert Hair Styling',
-      subtitle: 'Transform your look with precision'
+      subtitle: 'Transform your look with precision',
+      gradient: 'from-luxury-rose/90 via-luxury-champagne/80 to-transparent'
     },
     {
       image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1200&q=80',
       title: 'Organic Facials',
-      subtitle: 'Rejuvenate your natural beauty'
+      subtitle: 'Rejuvenate your natural beauty',
+      gradient: 'from-luxury-blush/90 via-luxury-pearl/80 to-transparent'
     },
     {
       image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=1200&q=80',
       title: 'Bridal Packages',
-      subtitle: 'Look stunning on your special day'
+      subtitle: 'Look stunning on your special day',
+      gradient: 'from-luxury-champagne/90 via-luxury-gold/80 to-transparent'
     },
     {
       image: 'https://images.unsplash.com/photo-1595475884562-073c30d45670?w=1200&q=80',
       title: 'Spa & Wellness',
-      subtitle: 'Relax and unwind in luxury'
+      subtitle: 'Relax and unwind in luxury',
+      gradient: 'from-luxury-pearl/90 via-luxury-blush/80 to-transparent'
     }
   ];
 
-  // Auto-change carousel every 4 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -43,91 +47,169 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden pt-16">
+    <section id="home" className="relative h-screen w-full overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
           className="absolute inset-0"
         >
-          {/* Background Image */}
-          <div 
+          {/* Background Image with Ken Burns Effect */}
+          <motion.div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+            animate={{ scale: [1, 1.1] }}
+            transition={{ duration: 4, ease: "linear" }}
           >
-            <div className="absolute inset-0 bg-black/40"></div>
+            {/* Gradient Overlay */}
+            <div className={`absolute inset-0 bg-gradient-to-r ${slides[currentSlide].gradient}`}></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          </motion.div>
+
+          {/* Floating Sparkles */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute"
+                initial={{ 
+                  x: Math.random() * window.innerWidth, 
+                  y: Math.random() * window.innerHeight,
+                  opacity: 0 
+                }}
+                animate={{ 
+                  y: [null, Math.random() * window.innerHeight],
+                  opacity: [0, 1, 0]
+                }}
+                transition={{ 
+                  duration: 3 + Math.random() * 2, 
+                  repeat: Infinity,
+                  delay: i * 0.5 
+                }}
+              >
+                <Sparkles className="text-luxury-gold w-6 h-6" />
+              </motion.div>
+            ))}
           </div>
 
-          {/* Content Overlay */}
-          <div className="relative h-full flex items-center justify-center text-center px-4 sm:px-6">
-            <div className="max-w-4xl">
-              <motion.h1 
-                className="text-4xl sm:text-5xl md:text-7xl font-serif font-light text-white mb-4 sm:mb-6"
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
+          {/* Content */}
+          <div className="relative h-full flex items-center justify-center text-center px-4 sm:px-6 pt-16">
+            <div className="max-w-5xl">
+              {/* Animated Title */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="mb-6"
               >
-                {slides[currentSlide].title}
-              </motion.h1>
+                <h1 className="text-5xl sm:text-6xl md:text-8xl font-display font-light text-white mb-4 leading-tight">
+                  <motion.span
+                    className="inline-block"
+                    animate={{ 
+                      textShadow: [
+                        "0 0 20px rgba(212, 175, 55, 0.5)",
+                        "0 0 40px rgba(212, 175, 55, 0.8)",
+                        "0 0 20px rgba(212, 175, 55, 0.5)"
+                      ]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    {slides[currentSlide].title}
+                  </motion.span>
+                </h1>
+              </motion.div>
+
+              {/* Animated Subtitle */}
               <motion.p 
-                className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8"
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
+                className="text-xl sm:text-2xl md:text-3xl text-white/95 mb-10 font-light tracking-wide"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
               >
                 {slides[currentSlide].subtitle}
               </motion.p>
+
+              {/* Animated Buttons */}
               <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.6 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
               >
-                <Button size="lg" asChild className="text-base sm:text-lg">
-                  <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">
-                    Book Your Appointment
-                  </a>
-                </Button>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button 
+                    size="lg" 
+                    asChild 
+                    className="btn-luxury text-lg px-10 py-6 shadow-2xl"
+                  >
+                    <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">
+                      <Sparkles className="w-5 h-5 mr-2" />
+                      Book Your Appointment
+                    </a>
+                  </Button>
+                </motion.div>
+              </motion.div>
+
+              {/* Decorative Line */}
+              <motion.div
+                className="mt-12 flex justify-center"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1, delay: 0.9 }}
+              >
+                <div className="w-32 h-1 bg-gradient-to-r from-transparent via-luxury-gold to-transparent"></div>
               </motion.div>
             </div>
           </div>
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Arrows */}
-      <button 
+      {/* Navigation Arrows with Glow */}
+      <motion.button 
         onClick={prevSlide}
-        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-2 sm:p-3 rounded-full transition-all z-10"
+        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 glass p-3 sm:p-4 rounded-full transition-all z-10 group hover:glow"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
       >
-        <ChevronLeft size={24} />
-      </button>
-      <button 
+        <ChevronLeft className="w-6 h-6 text-luxury-gold group-hover:text-luxury-rose transition-colors" />
+      </motion.button>
+      
+      <motion.button 
         onClick={nextSlide}
-        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-2 sm:p-3 rounded-full transition-all z-10"
+        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 glass p-3 sm:p-4 rounded-full transition-all z-10 group hover:glow"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
       >
-        <ChevronRight size={24} />
-      </button>
+        <ChevronRight className="w-6 h-6 text-luxury-gold group-hover:text-luxury-rose transition-colors" />
+      </motion.button>
 
-      {/* Dots Indicator */}
-      <div className="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      {/* Animated Dots */}
+      <div className="absolute bottom-24 sm:bottom-32 left-1/2 -translate-x-1/2 flex gap-3 z-10">
         {slides.map((_, index) => (
-          <button
+          <motion.button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
-              currentSlide === index ? 'bg-white w-6 sm:w-8' : 'bg-white/50'
+            className={`rounded-full transition-all ${
+              currentSlide === index 
+                ? 'bg-luxury-gold w-12 h-3' 
+                : 'bg-white/50 w-3 h-3 hover:bg-white/80'
             }`}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            animate={currentSlide === index ? { 
+              boxShadow: ["0 0 10px rgba(212, 175, 55, 0.5)", "0 0 20px rgba(212, 175, 55, 0.8)", "0 0 10px rgba(212, 175, 55, 0.5)"]
+            } : {}}
+            transition={{ duration: 1, repeat: currentSlide === index ? Infinity : 0 }}
           />
         ))}
       </div>

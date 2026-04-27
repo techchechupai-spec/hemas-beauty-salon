@@ -2,12 +2,14 @@ import React from 'react';
 import { FaImages, FaUtensils, FaCrown, FaWhatsapp } from 'react-icons/fa';
 
 const MobileBottomNav = () => {
+  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '1234567890';
+  
   return (
     <>
       {/* WhatsApp Sticky Box - Above Bottom Nav */}
       <div className="md:hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-sm">
         <a 
-          href="https://wa.me/1234567890" 
+          href={`https://wa.me/${whatsappNumber}`} 
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-3 bg-whatsapp text-white px-6 py-4 rounded-2xl shadow-2xl hover:bg-whatsapp/90 transition-all"
