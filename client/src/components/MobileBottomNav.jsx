@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaImages, FaUtensils, FaCrown, FaWhatsapp } from 'react-icons/fa';
+import { FaImages, FaCreditCard, FaCrown, FaWhatsapp } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const MobileBottomNav = () => {
   const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '1234567890';
@@ -14,7 +15,19 @@ const MobileBottomNav = () => {
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-3 bg-whatsapp text-white px-6 py-4 rounded-2xl shadow-2xl hover:bg-whatsapp/90 transition-all"
         >
-          <FaWhatsapp className="text-3xl" />
+          <motion.div
+            animate={{ 
+              rotate: [0, -15, 15, -15, 15, 0],
+              scale: [1, 1.1, 1.1, 1.1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 0.6,
+              repeat: Infinity,
+              repeatDelay: 2.4
+            }}
+          >
+            <FaWhatsapp className="text-3xl" />
+          </motion.div>
           <div className="text-left">
             <div className="text-sm font-medium">Contact Us</div>
             <div className="text-xs opacity-90">+1 (234) 567-890</div>
@@ -34,13 +47,13 @@ const MobileBottomNav = () => {
             <span className="text-xs font-medium">Images</span>
           </a>
 
-          {/* Menu */}
+          {/* Services */}
           <a 
             href="#services" 
             className="flex flex-col items-center justify-center py-2 px-4 text-gray-600 hover:text-primary transition-colors"
           >
-            <FaUtensils className="text-2xl mb-1" />
-            <span className="text-xs font-medium">Menu</span>
+            <FaCreditCard className="text-2xl mb-1" />
+            <span className="text-xs font-medium">Services</span>
           </a>
 
           {/* Membership */}

@@ -4,7 +4,9 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Gallery from './components/Gallery';
+import InstagramFollow from './components/InstagramFollow';
 import Membership from './components/Membership';
+import Footer from './components/Footer';
 import MobileBottomNav from './components/MobileBottomNav';
 
 function App() {
@@ -18,7 +20,9 @@ function App() {
               <Hero />
               <Services />
               <Gallery />
+              <InstagramFollow />
               <Membership />
+              <Footer />
             </>
           } />
         </Routes>
