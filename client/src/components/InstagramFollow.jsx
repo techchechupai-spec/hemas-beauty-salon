@@ -26,7 +26,7 @@ const InstagramFollow = () => {
   }, []);
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-br from-pink-50 via-purple-50 to-white">
+    <section className="py-12 md:py-14 bg-gradient-to-br from-pink-50 via-purple-50 to-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -17,7 +17,7 @@ const Gallery = () => {
   ];
 
   return (
-    <section id="gallery" className="py-20 sm:py-32 px-4 sm:px-6 bg-gradient-to-b from-luxury-champagne via-luxury-pearl to-white relative overflow-hidden">
+    <section id="gallery" className="py-12 md:py-16 px-4 sm:px-6 bg-gradient-to-b from-luxury-champagne via-luxury-pearl to-white relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-40 right-20 w-64 h-64 bg-luxury-rose/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-40 left-20 w-80 h-80 bg-luxury-gold/10 rounded-full blur-3xl"></div>
@@ -29,7 +29,7 @@ const Gallery = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-12"
         >
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
@@ -67,7 +67,7 @@ const Gallery = () => {
         </motion.div>
         
         {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-20 sm:mb-0">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 md:mb-0">
           {images.map((img, index) => (
             <motion.div
               key={index}

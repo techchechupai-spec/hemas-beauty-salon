@@ -57,7 +57,7 @@ const Membership = () => {
   ];
 
   return (
-    <section id="membership" className="py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-secondary">
+    <section id="membership" className="py-12 md:py-16 px-4 sm:px-6 bg-gradient-to-b from-white to-secondary">
       <div className="container mx-auto">
         <motion.h2 
           className="text-4xl sm:text-5xl md:text-6xl font-serif text-center mb-4 relative"
@@ -70,7 +70,7 @@ const Membership = () => {
         </motion.h2>
         
         <motion.p 
-          className="text-center text-muted-foreground text-base sm:text-lg mb-12 sm:mb-16"
+          className="text-center text-muted-foreground text-base sm:text-lg mb-8 md:mb-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -78,7 +78,7 @@ const Membership = () => {
           Join our exclusive membership and enjoy premium benefits
         </motion.p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-20 sm:mb-0">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-12 md:mb-0">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.id}

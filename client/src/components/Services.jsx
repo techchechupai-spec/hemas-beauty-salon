@@ -76,7 +76,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-20 sm:py-32 px-4 sm:px-6 bg-gradient-to-b from-luxury-pearl via-white to-luxury-champagne relative overflow-hidden">
+    <section id="services" className="py-12 md:py-16 px-4 sm:px-6 bg-gradient-to-b from-luxury-pearl via-white to-luxury-champagne relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-luxury-gold/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-luxury-rose/10 rounded-full blur-3xl"></div>
@@ -88,7 +88,7 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-12"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -128,7 +128,7 @@ const Services = () => {
 
         {/* Services Grid */}
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 sm:mb-0"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 md:mb-0"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
