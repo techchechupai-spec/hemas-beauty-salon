@@ -4,8 +4,8 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Gallery from './components/Gallery';
-import Contact from './components/Contact';
-import WhatsAppFAB from './components/WhatsAppFAB';
+import Membership from './components/Membership';
+import MobileBottomNav from './components/MobileBottomNav';
 
 function App() {
   return (
@@ -18,11 +18,11 @@ function App() {
               <Hero />
               <Services />
               <Gallery />
-              <Contact />
+              <Membership />
             </>
           } />
         </Routes>
-        <WhatsAppFAB />
+        <MobileBottomNav />
       </div>
     </Router>
   );

@@ -4,13 +4,15 @@ A modern, high-end beauty salon website built with React, Shadcn UI, Tailwind CS
 
 ## ✨ Features
 
-- **Glassmorphism Navigation** - Floating header with blur effects
-- **Split-Screen Hero** - Elegant typography with high-quality imagery
-- **WhatsApp Integration** - Floating action button with pulse animation
-- **Service Cards** - Immersive hover-scale effects
+- **Sticky Transparent Navbar** - White transparent navbar with blur effects
+- **Auto-Changing Carousel** - 5 beautiful images rotating every 4 seconds
+- **Mobile Bottom Navigation** - Sticky bottom nav with 3 options (Images, Menu, Membership)
+- **WhatsApp Sticky Box** - Green contact box above bottom nav (mobile only)
+- **Service Cards** - 6 services with immersive hover effects
 - **Gallery Section** - Responsive grid with smooth animations
-- **Booking Form** - Beautiful contact form with Shadcn UI components
-- **Fully Responsive** - Mobile-first design
+- **Membership Plans** - 3 tier membership options
+- **Fully Responsive** - Optimized for all devices
+- **Direct WhatsApp Integration** - All CTAs redirect to WhatsApp
 
 ## 🎨 Design System
 
@@ -19,7 +21,7 @@ A modern, high-end beauty salon website built with React, Shadcn UI, Tailwind CS
 | Primary Background | `#FAFAF9` | Clean & Airy |
 | Accent Gold | `#C5A059` | Luxurious highlights |
 | Text/Contrast | `#1C1C1C` | Modern & Bold |
-| WhatsApp Green | `#25D366` | Action buttons |
+| WhatsApp Green | `#25D366` | Contact buttons |
 
 ## 🚀 Quick Start
 
@@ -40,7 +42,7 @@ npm install
 npm run dev
 ```
 
-The app will run on `http://localhost:3000`
+The app will run on `http://localhost:5173`
 
 ## 📦 Build for Production
 
@@ -77,18 +79,21 @@ Your site will be live at: `https://lumina-essence.onrender.com`
 ## 🔧 Configuration
 
 ### Update WhatsApp Number
-Edit the phone number in:
-- `src/components/WhatsAppFAB.jsx` (line 6)
-- `src/components/Hero.jsx` (line 25)
-- `src/components/Contact.jsx` (line 22)
+Edit the phone number in these files:
+- `src/components/Hero.jsx` (line 7)
+- `src/components/Navbar.jsx` (line 14)
+- `src/components/MobileBottomNav.jsx` (line 8)
+- `src/components/Membership.jsx` (line 8)
 
 Replace `1234567890` with your actual WhatsApp number (with country code, no + or spaces).
 
+**Format**: `15551234567` (for US number +1 555-123-4567)
+
 ### Update Images
 Replace placeholder images in:
-- `src/components/Hero.jsx`
-- `src/components/Services.jsx`
-- `src/components/Gallery.jsx`
+- `src/components/Hero.jsx` (carousel images)
+- `src/components/Services.jsx` (service images)
+- `src/components/Gallery.jsx` (gallery images)
 
 ## 📁 Project Structure
 
@@ -97,12 +102,12 @@ client/
 ├── src/
 │   ├── components/
 │   │   ├── ui/              # Shadcn UI components
-│   │   ├── Navbar.jsx
-│   │   ├── Hero.jsx
-│   │   ├── Services.jsx
-│   │   ├── Gallery.jsx
-│   │   ├── Contact.jsx
-│   │   └── WhatsAppFAB.jsx
+│   │   ├── Navbar.jsx       # Sticky transparent navbar
+│   │   ├── Hero.jsx         # Auto-carousel (5 images)
+│   │   ├── Services.jsx     # 6 service cards
+│   │   ├── Gallery.jsx      # Image gallery
+│   │   ├── Membership.jsx   # 3 membership plans
+│   │   └── MobileBottomNav.jsx  # Mobile bottom nav + WhatsApp box
 │   ├── lib/
 │   │   └── utils.js         # Utility functions
 │   ├── App.jsx
@@ -123,40 +128,51 @@ client/
 - **Tailwind CSS** - Styling
 - **Framer Motion** - Animations
 - **Lucide React** - Icons
+- **React Icons** - Additional icons
 - **React Router** - Navigation
 
 ## 📱 Features Breakdown
 
-### Glassmorphism Navbar
-- Transparent on scroll top
-- Blurred background when scrolled
-- Smooth animations
+### Sticky Navbar
+- Transparent white background with blur
+- Smooth scroll effects
+- Mobile hamburger menu
+- All links work on mobile & desktop
 
-### Hero Section
-- Split-screen layout
-- Elegant serif typography
-- WhatsApp CTA button
-- Responsive design
+### Hero Carousel
+- 5 auto-changing images (4 seconds each)
+- Manual navigation arrows
+- Dot indicators
+- Smooth fade transitions
+- Fully responsive
+
+### Mobile Bottom Navigation
+- Sticky at bottom (mobile only)
+- 3 options: Images, Menu, Membership
+- Icons from React Icons
+- Smooth transitions
+
+### WhatsApp Sticky Box
+- Green box with rounded corners
+- Shows "Contact Us" + phone number
+- Positioned above bottom nav (mobile only)
+- Direct WhatsApp redirect
 
 ### Services
-- Card-based layout
+- 6 service cards
 - Hover scale effects
 - Image zoom on hover
+- Fully responsive grid
 
 ### Gallery
-- Masonry grid layout
+- 8 images in responsive grid
 - Staggered animations
-- Lightbox-ready
+- Hover effects
 
-### Contact Form
-- Shadcn form components
-- WhatsApp integration
-- Form validation
-
-### WhatsApp FAB
-- Fixed floating button
-- Pulse animation
-- Direct chat link
+### Membership
+- 3 tier plans (Silver, Gold, Platinum)
+- Feature lists
+- WhatsApp integration for each plan
 
 ## 🎯 Customization
 
@@ -170,6 +186,14 @@ Update Google Fonts in `index.html`:
 
 ### Content
 Update text content in respective component files.
+
+## 📱 Mobile Features
+
+- Bottom navigation (3 icons)
+- WhatsApp sticky box
+- Hamburger menu
+- Touch-friendly buttons
+- Optimized layouts
 
 ## 📄 License
 
