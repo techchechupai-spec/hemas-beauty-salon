@@ -9,34 +9,29 @@ const Hero = () => {
 
   const slides = [
     {
-      image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1920&q=90',
       title: 'Redefine Your Radiance',
-      subtitle: 'Where luxury meets artistry',
-      gradient: 'from-luxury-gold/90 via-luxury-rose/80 to-transparent'
+      subtitle: 'Where luxury meets artistry'
     },
     {
-      image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=1920&q=90',
       title: 'Expert Hair Styling',
-      subtitle: 'Transform your look with precision',
-      gradient: 'from-luxury-rose/90 via-luxury-champagne/80 to-transparent'
+      subtitle: 'Transform your look with precision'
     },
     {
-      image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1519415387722-a1c3bbef716c?w=1920&q=90',
       title: 'Organic Facials',
-      subtitle: 'Rejuvenate your natural beauty',
-      gradient: 'from-luxury-blush/90 via-luxury-pearl/80 to-transparent'
+      subtitle: 'Rejuvenate your natural beauty'
     },
     {
-      image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=1920&q=90',
       title: 'Bridal Packages',
-      subtitle: 'Look stunning on your special day',
-      gradient: 'from-luxury-champagne/90 via-luxury-gold/80 to-transparent'
+      subtitle: 'Look stunning on your special day'
     },
     {
-      image: 'https://images.unsplash.com/photo-1595475884562-073c30d45670?w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=90',
       title: 'Spa & Wellness',
-      subtitle: 'Relax and unwind in luxury',
-      gradient: 'from-luxury-pearl/90 via-luxury-blush/80 to-transparent'
+      subtitle: 'Relax and unwind in luxury'
     }
   ];
 
@@ -45,171 +40,100 @@ const Hero = () => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <section id="home" className="relative h-screen md:h-screen h-[30vh] w-full overflow-hidden md:rounded-none rounded-[10%] md:mt-0 mt-16 mx-4 md:mx-0">
+    <section id="home" className="relative h-[50vh] md:h-[70vh] w-full overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
           className="absolute inset-0"
         >
-          {/* Background Image with Ken Burns Effect */}
-          <motion.div 
+          <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
-            animate={{ scale: [1, 1.1] }}
-            transition={{ duration: 4, ease: "linear" }}
           >
-            {/* Gradient Overlay */}
-            <div className={`absolute inset-0 bg-gradient-to-r ${slides[currentSlide].gradient}`}></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          </motion.div>
-
-          {/* Floating Sparkles */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute"
-                initial={{ 
-                  x: Math.random() * window.innerWidth, 
-                  y: Math.random() * window.innerHeight,
-                  opacity: 0 
-                }}
-                animate={{ 
-                  y: [null, Math.random() * window.innerHeight],
-                  opacity: [0, 1, 0]
-                }}
-                transition={{ 
-                  duration: 3 + Math.random() * 2, 
-                  repeat: Infinity,
-                  delay: i * 0.5 
-                }}
-              >
-                <Sparkles className="text-luxury-gold w-6 h-6" />
-              </motion.div>
-            ))}
+            <div className="absolute inset-0 bg-black/40"></div>
           </div>
 
+
+
           {/* Content */}
-          <div className="relative h-full flex items-center justify-center text-center px-4 sm:px-6 md:pt-16">
+          <div className="relative h-full flex items-center justify-center text-center px-4 sm:px-6">
             <div className="max-w-5xl">
-              {/* Animated Title */}
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
                 className="mb-3 md:mb-6"
               >
-                <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-light text-white mb-1 md:mb-4 leading-tight">
-                  <motion.span
-                    className="inline-block"
-                    animate={{ 
-                      textShadow: [
-                        "0 0 20px rgba(212, 175, 55, 0.5)",
-                        "0 0 40px rgba(212, 175, 55, 0.8)",
-                        "0 0 20px rgba(212, 175, 55, 0.5)"
-                      ]
-                    }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    {slides[currentSlide].title}
-                  </motion.span>
+                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-light text-white mb-2 md:mb-4 leading-tight">
+                  {slides[currentSlide].title}
                 </h1>
               </motion.div>
 
-              {/* Animated Subtitle */}
               <motion.p 
-                className="text-xs sm:text-xl md:text-2xl lg:text-3xl text-white/95 mb-2 md:mb-10 font-light tracking-wide"
-                initial={{ opacity: 0, y: 30 }}
+                className="text-sm sm:text-xl md:text-2xl text-white/90 mb-4 md:mb-8 font-light tracking-wide"
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
               >
                 {slides[currentSlide].subtitle}
               </motion.p>
 
-              {/* Animated Buttons */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
-                initial={{ opacity: 0, y: 30 }}
+                className="flex justify-center"
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
               >
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <Button 
+                  size="lg" 
+                  asChild 
+                  className="btn-luxury text-sm md:text-lg px-6 md:px-10 py-3 md:py-6 shadow-2xl hover:scale-105 transition-transform"
                 >
-                  <Button 
-                    size="lg" 
-                    asChild 
-                    className="btn-luxury text-xs md:text-lg px-4 md:px-10 py-2 md:py-6 shadow-2xl"
-                  >
-                    <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">
-                      <Sparkles className="w-3 h-3 md:w-5 md:h-5 mr-1 md:mr-2" />
-                      Book Appointment
-                    </a>
-                  </Button>
-                </motion.div>
-              </motion.div>
-
-              {/* Decorative Line */}
-              <motion.div
-                className="mt-6 md:mt-12 flex justify-center hidden md:block"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 1, delay: 0.9 }}
-              >
-                <div className="w-32 h-1 bg-gradient-to-r from-transparent via-luxury-gold to-transparent"></div>
+                  <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">
+                    <Sparkles className="w-4 h-4 md:w-5 md:h-5 mr-2" />
+                    Book Appointment
+                  </a>
+                </Button>
               </motion.div>
             </div>
           </div>
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Arrows with Glow */}
-      <motion.button 
+      <button 
         onClick={prevSlide}
-        className="absolute left-2 md:left-4 sm:left-8 top-1/2 -translate-y-1/2 glass p-2 md:p-3 sm:p-4 rounded-full transition-all z-10 group hover:glow"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm p-2 md:p-3 rounded-full hover:bg-white/30 transition-all z-10"
       >
-        <ChevronLeft className="w-6 h-6 text-luxury-gold group-hover:text-luxury-rose transition-colors" />
-      </motion.button>
+        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
+      </button>
       
-      <motion.button 
+      <button 
         onClick={nextSlide}
-        className="absolute right-2 md:right-4 sm:right-8 top-1/2 -translate-y-1/2 glass p-2 md:p-3 sm:p-4 rounded-full transition-all z-10 group hover:glow"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm p-2 md:p-3 rounded-full hover:bg-white/30 transition-all z-10"
       >
-        <ChevronRight className="w-6 h-6 text-luxury-gold group-hover:text-luxury-rose transition-colors" />
-      </motion.button>
+        <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
+      </button>
 
-      {/* Animated Dots */}
-      <div className="absolute bottom-32 md:bottom-24 sm:bottom-32 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {slides.map((_, index) => (
-          <motion.button
+          <button
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`rounded-full transition-all ${
               currentSlide === index 
-                ? 'bg-luxury-gold w-8 md:w-12 h-2 md:h-3' 
-                : 'bg-white/50 w-2 md:w-3 h-2 md:h-3 hover:bg-white/80'
-            }`}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            animate={currentSlide === index ? { 
-              boxShadow: ["0 0 10px rgba(212, 175, 55, 0.5)", "0 0 20px rgba(212, 175, 55, 0.8)", "0 0 10px rgba(212, 175, 55, 0.5)"]
-            } : {}}
-            transition={{ duration: 1, repeat: currentSlide === index ? Infinity : 0 }}
+                ? 'bg-luxury-gold w-8 md:w-10 h-2' 
+                : 'bg-white/50 w-2 h-2 hover:bg-white/80'
+            }`} }}
           />
         ))}
       </div>
