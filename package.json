@@ -4,7 +4,7 @@
   "description": "Luxury Beauty Salon Website",
   "scripts": {
     "dev": "cd client && npm run dev",
-    "build": "cd client && npm run build",
+    "build": "cd client && npm install && npm run build",
     "preview": "cd client && npm run preview",
     "install-all": "cd client && npm install"
   },
