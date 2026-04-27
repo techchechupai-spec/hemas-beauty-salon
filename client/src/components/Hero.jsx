@@ -133,7 +133,7 @@ const Hero = () => {
               currentSlide === index 
                 ? 'bg-luxury-gold w-8 md:w-10 h-2' 
                 : 'bg-white/50 w-2 h-2 hover:bg-white/80'
-            }`} }}
+            }`}
           />
         ))}
       </div>
