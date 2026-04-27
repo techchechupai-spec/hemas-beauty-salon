@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardTitle } from './ui/card';
-import { Scissors, Sparkles, Heart, Flower2, Hand, Palette } from 'lucide-react';
+import { Scissors, Sparkles, Heart, Hand, Palette } from 'lucide-react';
 
 const Services = () => {
   const services = [
@@ -11,7 +11,8 @@ const Services = () => {
       description: 'Transform your look with precision cuts and creative styling', 
       image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80',
       icon: Scissors,
-      gradient: 'from-luxury-gold to-luxury-champagne'
+      gradient: 'from-luxury-gold to-luxury-champagne',
+      price: '₹1,500'
     },
     { 
       id: 2, 
@@ -19,7 +20,8 @@ const Services = () => {
       description: 'Rejuvenate your skin with natural, luxurious treatments', 
       image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80',
       icon: Sparkles,
-      gradient: 'from-luxury-rose to-luxury-blush'
+      gradient: 'from-luxury-rose to-luxury-blush',
+      price: '₹2,000'
     },
     { 
       id: 3, 
@@ -27,31 +29,26 @@ const Services = () => {
       description: 'Look radiant on your special day with our signature bridal package', 
       image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80',
       icon: Heart,
-      gradient: 'from-luxury-blush to-luxury-pearl'
+      gradient: 'from-luxury-blush to-luxury-pearl',
+      price: '₹15,000'
     },
     { 
       id: 4, 
-      title: 'Spa & Massage', 
-      description: 'Relax and unwind with our therapeutic spa treatments', 
-      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80',
-      icon: Flower2,
-      gradient: 'from-luxury-champagne to-luxury-gold'
-    },
-    { 
-      id: 5, 
       title: 'Nail Art', 
       description: 'Express yourself with stunning nail designs and manicures', 
       image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80',
       icon: Hand,
-      gradient: 'from-luxury-rose to-luxury-champagne'
+      gradient: 'from-luxury-rose to-luxury-champagne',
+      price: '₹800'
     },
     { 
-      id: 6, 
+      id: 5, 
       title: 'Makeup Artistry', 
       description: 'Professional makeup for any occasion or event', 
       image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80',
       icon: Palette,
-      gradient: 'from-luxury-gold to-luxury-rose'
+      gradient: 'from-luxury-gold to-luxury-rose',
+      price: '₹3,500'
     }
   ];
 
@@ -146,7 +143,18 @@ const Services = () => {
                 whileHover={{ y: -10 }}
                 className="group"
               >
-                <Card className="luxury-card overflow-hidden h-full border-0">
+                <Card className="luxury-card overflow-hidden h-full border-0 relative">
+                  {/* Price Badge */}
+                  <motion.div
+                    className="absolute top-4 right-4 z-20 glass px-4 py-2 rounded-full"
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, type: "spring" }}
+                  >
+                    <span className="text-luxury-gold font-bold text-lg">{service.price}</span>
+                  </motion.div>
+
                   {/* Image Container */}
                   <div className="relative h-64 sm:h-72 overflow-hidden">
                     <motion.img 
@@ -184,9 +192,15 @@ const Services = () => {
                       </CardTitle>
                     </div>
                     
-                    <CardDescription className="text-base text-luxury-charcoal/70 leading-relaxed">
+                    <CardDescription className="text-base text-luxury-charcoal/70 leading-relaxed mb-4">
                       {service.description}
                     </CardDescription>
+
+                    {/* Price Display */}
+                    <div className="flex items-center justify-between mt-4 pt-4 border-t border-luxury-gold/20">
+                      <span className="text-sm text-luxury-charcoal/60">Starting from</span>
+                      <span className="text-2xl font-bold text-luxury-gold">{service.price}</span>
+                    </div>
 
                     {/* Animated Border Bottom */}
                     <motion.div

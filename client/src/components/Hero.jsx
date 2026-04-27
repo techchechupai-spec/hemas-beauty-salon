@@ -51,7 +51,7 @@ const Hero = () => {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden">
+    <section id="home" className="relative h-screen md:h-screen h-[60vh] w-full overflow-hidden md:rounded-none rounded-[20%] md:mt-0 mt-16 mx-4 md:mx-0">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -100,16 +100,16 @@ const Hero = () => {
           </div>
 
           {/* Content */}
-          <div className="relative h-full flex items-center justify-center text-center px-4 sm:px-6 pt-16">
+          <div className="relative h-full flex items-center justify-center text-center px-4 sm:px-6 md:pt-16">
             <div className="max-w-5xl">
               {/* Animated Title */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="mb-6"
+                className="mb-3 md:mb-6"
               >
-                <h1 className="text-5xl sm:text-6xl md:text-8xl font-display font-light text-white mb-4 leading-tight">
+                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-light text-white mb-2 md:mb-4 leading-tight">
                   <motion.span
                     className="inline-block"
                     animate={{ 
@@ -128,7 +128,7 @@ const Hero = () => {
 
               {/* Animated Subtitle */}
               <motion.p 
-                className="text-xl sm:text-2xl md:text-3xl text-white/95 mb-10 font-light tracking-wide"
+                className="text-sm sm:text-xl md:text-2xl lg:text-3xl text-white/95 mb-4 md:mb-10 font-light tracking-wide"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
@@ -138,7 +138,7 @@ const Hero = () => {
 
               {/* Animated Buttons */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
@@ -150,10 +150,10 @@ const Hero = () => {
                   <Button 
                     size="lg" 
                     asChild 
-                    className="btn-luxury text-lg px-10 py-6 shadow-2xl"
+                    className="btn-luxury text-sm md:text-lg px-6 md:px-10 py-4 md:py-6 shadow-2xl"
                   >
                     <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">
-                      <Sparkles className="w-5 h-5 mr-2" />
+                      <Sparkles className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                       Book Your Appointment
                     </a>
                   </Button>
@@ -162,7 +162,7 @@ const Hero = () => {
 
               {/* Decorative Line */}
               <motion.div
-                className="mt-12 flex justify-center"
+                className="mt-6 md:mt-12 flex justify-center hidden md:block"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 0.9 }}
@@ -177,7 +177,7 @@ const Hero = () => {
       {/* Navigation Arrows with Glow */}
       <motion.button 
         onClick={prevSlide}
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 glass p-3 sm:p-4 rounded-full transition-all z-10 group hover:glow"
+        className="absolute left-2 md:left-4 sm:left-8 top-1/2 -translate-y-1/2 glass p-2 md:p-3 sm:p-4 rounded-full transition-all z-10 group hover:glow"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
@@ -186,7 +186,7 @@ const Hero = () => {
       
       <motion.button 
         onClick={nextSlide}
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 glass p-3 sm:p-4 rounded-full transition-all z-10 group hover:glow"
+        className="absolute right-2 md:right-4 sm:right-8 top-1/2 -translate-y-1/2 glass p-2 md:p-3 sm:p-4 rounded-full transition-all z-10 group hover:glow"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
@@ -194,7 +194,7 @@ const Hero = () => {
       </motion.button>
 
       {/* Animated Dots */}
-      <div className="absolute bottom-24 sm:bottom-32 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+      <div className="absolute bottom-28 md:bottom-24 sm:bottom-32 left-1/2 -translate-x-1/2 flex gap-3 z-10">
         {slides.map((_, index) => (
           <motion.button
             key={index}
