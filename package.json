@@ -5,10 +5,19 @@
   "scripts": {
     "dev": "cd client && npm run dev",
     "build": "cd client && npm install && npm run build",
-    "preview": "cd client && npm run preview",
-    "install-all": "cd client && npm install"
+    "preview": "wrangler dev",
+    "install-all": "cd client && npm install",
+    "deploy": "wrangler deploy"
   },
-  "keywords": ["beauty", "salon", "react", "shadcn"],
+  "keywords": [
+    "beauty",
+    "salon",
+    "react",
+    "shadcn"
+  ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^4.85.0"
+  }
 }
