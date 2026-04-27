@@ -1,2 +1,5 @@
 name = "lumina-essence-beauty-salon"
-pages_build_output_dir = "client/dist"
+compatibility_date = "2024-04-27"
+
+[assets]
+directory = "client/dist"
